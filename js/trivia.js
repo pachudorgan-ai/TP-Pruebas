@@ -49,4 +49,7 @@ fetch (url, {
         console.log(paises[0].names);
         console.log(paises[0].names.translations);
         console.log(paises[0].flag);
+
+        console.log(paises[0].names.translations.spa.common);
+        console.log(paises[0].flag.url_png);
     });
