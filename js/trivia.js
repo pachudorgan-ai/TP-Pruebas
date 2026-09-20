@@ -30,7 +30,7 @@ const botonReiniciar = document.querySelector ('#triviaReiniciar');
 
 //hago el pedido de los paises con sus respectivas banderas y los guardo en un array de objetos
 
-let paises [];
+let paises = [];
 
 fetch (url, {
     headers: {
