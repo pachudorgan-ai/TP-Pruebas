@@ -4,7 +4,7 @@
 
 //pedido de la API
 const url = "https://api.restcountries.com/countries/v5";
-const key = MI_API_KEY; // esta api key esta restringida a ser usada solo con ciertas paginas como mi pagina de github y el pages
+const key = rc_live_ba599f658cb54d278c6fe3f42078a83b; // esta api key esta restringida a ser usada solo con ciertas paginas como mi pagina de github y el pages
 
 //elementos del html para modificar su contenido y visibilidad
 const inicio = document.querySelector ('#triviaInicio');
