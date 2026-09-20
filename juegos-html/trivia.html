@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Juego de trivia</title>
+        <link href="../css/estilos.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <!--h1 con nombre de la pagina-->
+            <nav></nav>
+        </header>
+        <main>
+            <h2>Trivia: Adivina la bandera!</h2>
+            
+            <!--INSTRUCCIONES DE JUEGO Y BOTON PARA EMPEZAR-->
+            <section id="triviaInicio">
+                <h3>¿Cómo jugar?</h3>
+                <p>El juego consiste en adivinar el país al cual le pertenece la bandera. Comenzando con <strong>tres vidas</strong>, se presentara una bandera con cuatro opciones de paises y se deberá elegir el que corresponde. Por cada respuesta correcta se suman <strong>+10 puntos</strong> y por cada respuesta incorrecta se pierde una vida. <strong>El juego termina cuando se acaban todas las vidas o cuando se logran adivinar todas las banderas.</strong></p>
+                <button id="triviaComenzar" type="button">Comenzar!</button>
+            </section>
+
+            <!--BLOQUE DONDE VA EL JUEGO-->
+            <section id="triviaJuego">
+
+                <!--El "encabezado" del bloque con la vida, progreso, etc-->
+                <div id="triviaStats">
+                    <p id="triviaProgreso"></p>
+                    <p id="triviaVidas"></p>
+                    <p id="triviaCorrectas"></p>
+                    <p id="triviaEstado">Cargando pregunta...</p>
+                </div>
+
+                <!--El bloque donde van las preguntas y las opciones-->
+                <div id="triviaPreguntas">
+                    <h3 id="triviaBandera"></h3>
+                    <div id="triviaOpciones"></div>
+                    <button id="triviaSiguiente" type="button" hidden>Siguiente pregunta</button>
+                </div>
+            </section>
+
+            <!--FINAL DEL JUEGO Y RESULTADOS-->
+            <section id="triviaFinal">
+                <h3 id="triviaResultado"></h3>
+                <h3>Resultado final</h3>
+                <p id="triviaPuntaje"></p>
+                <p>Guarde su Puntaje!</p>
+                <form action="" method="post" id="triviaJugador">
+                    <label for="triviaNombre">Ingrese su nombre</label>
+                    <input type="text" name="triviaNombre" id="triviaNombre">
+                </form>
+                <button type="button" id="triviaReiniciar">Volver a jugar!</button>
+            </section>
+        </main>
+        <footer></footer>
+        <script src="../js/trivia.js"></script>
+    </body>
+</html>
