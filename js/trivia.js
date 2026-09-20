@@ -31,7 +31,6 @@ const botonReiniciar = document.querySelector ('#triviaReiniciar');
 //JUEGO PRINCIPAL
 //================
 
-
 //hago el pedido de los paises con sus respectivas banderas y los guardo en un array de objetos
 let paises = [];
 
@@ -44,10 +43,10 @@ fetch (url, {
         return respuesta.json();
     })
     .then(function (datos) {
-        paises = datos
-        console.log(datos);
+        paises = datos.data.objects;
+        console.log(paises);
         console.log(paises[0]);
-        console.log(paises[0].name);
-        console.log(paises[0].name.translations.spa);
-        console.log(paises[0].flags);
+        console.log(paises[0].names);
+        console.log(paises[0].names.translations);
+        console.log(paises[0].flag);
     });
