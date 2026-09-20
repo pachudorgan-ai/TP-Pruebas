@@ -43,10 +43,8 @@ fetch (url, {
     .then(function (datos) {
         paises = datos
         console.log(datos);
+        console.log(paises[0]);
+        console.log(paises[0].name);
+        console.log(paises[0].name.translations.spa);
+        console.log(paises[0].flags);
     });
-
-
-console.log(paises[0]);
-console.log(paises[0].name);
-console.log(paises[0].name.translations.spa);
-console.log(paises[0].flags);
