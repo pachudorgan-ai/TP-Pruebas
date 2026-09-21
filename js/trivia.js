@@ -76,3 +76,28 @@ function cargarPaises() {
         }})
 }
 cargarPaises ();
+
+function generarPregunta () {
+    let opcionesPreguntas = [];
+
+    //Se determina aleatoriamente el pais correcto
+    let numeroCorrecto = Math.floor(Math.random()*paisesConBandera.length);
+    let paisCorrecto = paisesConBandera[numero];
+
+    opcionesPreguntas.push(paisCorrecto);
+
+    //Se deterinan los otros paises para las opciones incorrectas, corroborando que no se repita el mismo pais de la opcion correcta.
+    while (opcionesPreguntas.length < 4) {
+        let numeroIncorrecto = Math.floor(Math.random()*paisesConBandera.length);
+        let paisIncorrecto = paisesConBandera[numeroIncorrecto];
+
+        if (paisIncorrecto != paisCorrecto) {
+            opcionesPreguntas.push(paisIncorrecto);
+        }
+    }
+}
+
+generarPregunta ();
+
+
+
