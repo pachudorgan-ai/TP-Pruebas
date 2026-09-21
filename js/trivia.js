@@ -31,7 +31,7 @@ const botonReiniciar = document.querySelector ('#triviaReiniciar');
 
 // La API solo me permite pedir de hasta 25 paises asi que debo hacer varios pedidos agregando un offset que corre a los siguiente 25 paises
 let offset = 0;
-const url = "https://api.restcountries.com/countries/v5" + offset;
+const url = "https://api.restcountries.com/countries/v5?offset=" + offset;
 const key = "rc_live_ba599f658cb54d278c6fe3f42078a83b"; // esta api key esta restringida a ser usada solo con ciertas paginas como la pagina de github pages de este repositorio, por lo que no es un problema publicarla
 
 let paises = [];
