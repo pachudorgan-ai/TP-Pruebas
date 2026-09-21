@@ -3,7 +3,9 @@
 //===================================
 
 //pedido de la API
+// La API solo me permite pedir de hasta 25 paises asi que debo hacer varios pedidos.
 const url = "https://api.restcountries.com/countries/v5";
+const urlDos = "https://api.restcountries.com/countries/v5?offset=25";
 const key = "rc_live_ba599f658cb54d278c6fe3f42078a83b"; // esta api key esta restringida a ser usada solo con ciertas paginas como mi pagina de github y el pages
 
 //elementos del html para modificar su contenido y visibilidad
@@ -32,6 +34,7 @@ const botonReiniciar = document.querySelector ('#triviaReiniciar');
 //================
 
 //hago el pedido de los paises con sus respectivas banderas y los guardo en un array de objetos
+// La API solo me permite pedir de hasta 25 paises asi que debo hacer varios pedidos.
 let paises = [];
 
 fetch (url, {
@@ -50,6 +53,18 @@ fetch (url, {
         console.log(paises[0].names.translations);
         console.log(paises[0].flag);
 
-        console.log(paises[0].names.translations.spa.common);
-        console.log(paises[0].flag.url_png);
+        console.log(paises[1].names.translations.spa.common);
+        console.log(paises[1].flag.url_png);
+    });
+
+    fetch(urlDos, {
+    headers: {
+        "Authorization": "Bearer " + key
+    }
+})
+    .then(function (respuesta) {
+        return respuesta.json();
+    })
+    .then(function (datos) {
+        console.log(datos);
     });
