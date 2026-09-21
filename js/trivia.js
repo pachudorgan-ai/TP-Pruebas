@@ -35,7 +35,7 @@ const url = "https://api.restcountries.com/countries/v5?offset=" + offset;
 const key = "rc_live_ba599f658cb54d278c6fe3f42078a83b"; // esta api key esta restringida a ser usada solo con ciertas paginas como la pagina de github pages de este repositorio, por lo que no es un problema publicarla
 
 let paises = [];
-
+let paisesConBandera = [];
 //la funcion pide a la Api 25 paises, los convierte a formato json y los alamcena en el array de paises. Luego pregunta si quedan mas paises por pedir, si la respuesta es si, se agrega un +25 al offset y se hace un nuevo pedido. Esta suma al offset permita que se pida a partir del pais 26 y no se repitan los mismos de antes.
 
 function cargarPaises() {
@@ -55,11 +55,24 @@ fetch(url, {
 
         console.log("Países cargados:", paises.length);
 
-        if (datos.data.meta.more == true) {
-                offset = offset + 25;
-                cargarPaises();
-        }
+    if (datos.data.meta.more == true) {
+    offset = offset + 25;
+    cargarPaises();
+    } else {
+    console.log("Todos los países fueron cargados");
+    console.log(paises.length);
+    }
+    paises.forEach (function (pais) {
+    if (pais.flag.url_png != "") {
+        paisesConBandera.push(pais);
+    }
+})
     });
+    console.log (paisesConBandera.length);
 }
 
 cargarPaises ();
+
+//Como no todos los paises tienen cargada una bandera hago un if que recorra el array y se quede solo con aquellos que tienen una foto de la bandera.
+
+
