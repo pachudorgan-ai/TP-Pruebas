@@ -58,7 +58,7 @@ function cargarPaises() {
 
         console.log("Países cargados:", paises.length);
 
-        if (datos.data.meta.more == true) {
+        if (datos.data.meta.more == true && paises.length < 250) {
             offset = offset + 25;
             cargarPaises();
 
