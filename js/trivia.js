@@ -3,6 +3,7 @@
 //===================================
 
 //elementos del html para modificar su contenido y visibilidad
+
 const inicio = document.querySelector ('#triviaInicio');
 const botonComenzar = document.querySelector ('#triviaComenzar');
 
@@ -27,7 +28,7 @@ const botonReiniciar = document.querySelector ('#triviaReiniciar');
 //JUEGO PRINCIPAL: CREACION DE PREGUNTAS
 //=======================================
 
-////hago el pedido de los paises con sus respectivas banderas y los guardo en un array de objetos
+////IDEA PRINCIPAL: hago el pedido de los paises con sus respectivas banderas y los guardo en un array de objetos
 
 // La API solo me permite pedir de hasta 25 paises asi que debo hacer varios pedidos agregando un offset que corre a los siguiente 25 paises
 let offset = 0;
@@ -35,6 +36,7 @@ const key = "rc_live_ba599f658cb54d278c6fe3f42078a83b"; // esta api key esta res
 
 let paises = [];
 let paisesConBandera = [];
+
 //la funcion pide a la Api 25 paises, los convierte a formato json y los alamcena en el array de paises. Luego pregunta si quedan mas paises por pedir, si la respuesta es si, se agrega un +25 al offset y se hace un nuevo pedido. Esta suma al offset permita que se pida a partir del pais 26 y no se repitan los mismos de antes.
 
 function cargarPaises() {
@@ -45,16 +47,16 @@ function cargarPaises() {
             "Authorization": "Bearer " + key
         }
     })
-        .then(function (respuesta) {
-            return respuesta.json();
-        })
-        .then(function (datos) {
+    .then(function (respuesta) {
+        return respuesta.json();
+    })
+    .then(function (datos) {
 
-            datos.data.objects.forEach(function (pais) {
-                    paises.push(pais);
-            });
+        datos.data.objects.forEach(function (pais) {
+                paises.push(pais);
+        });
 
-            console.log("Países cargados:", paises.length);
+        console.log("Países cargados:", paises.length);
 
         if (datos.data.meta.more == true) {
             offset = offset + 25;
@@ -71,9 +73,6 @@ function cargarPaises() {
                 paisesConBandera.push(pais);
             }})
             console.log (paisesConBandera.length);
-        })
+        }})
 }
 cargarPaises ();
-
-
-
