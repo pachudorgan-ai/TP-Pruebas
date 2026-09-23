@@ -77,27 +77,40 @@ function cargarPaises() {
 }
 cargarPaises ();
 
+//Creo una funcion para generar los 4 paises utilizados en la opcion multiple, incluyendo el pais con la bandera correcta
 function generarPregunta () {
-    let opcionesPreguntas = [];
+    let opcionesPregunta = [];
 
-    //Se determina aleatoriamente el pais correcto
+    //Se determina aleatoriamente el pais correcto y se guarda en la primera posicion del array
     let numeroCorrecto = Math.floor(Math.random()*paisesConBandera.length);
     let paisCorrecto = paisesConBandera[numero];
 
-    opcionesPreguntas.push(paisCorrecto);
+    opcionesPregunta.push(paisCorrecto);
 
-    //Se deterinan los otros paises para las opciones incorrectas, corroborando que no se repita el mismo pais de la opcion correcta.
-    while (opcionesPreguntas.length < 4) {
+    //Se deterinan los otros paises para las opciones incorrectas, corroborando que no se repita el mismo pais de la opcion correcta. Luego se guardan tambien en el array.
+    while (opcionesPregunta.length < 4) {
         let numeroIncorrecto = Math.floor(Math.random()*paisesConBandera.length);
         let paisIncorrecto = paisesConBandera[numeroIncorrecto];
 
         if (paisIncorrecto != paisCorrecto) {
-            opcionesPreguntas.push(paisIncorrecto);
+            opcionesPregunta.push(paisIncorrecto);
         }
     }
+    console.log ('la opcion correcta es' + paisCorrecto.names.translations.spa);
+    console.log ('opciones:' + opcionesPregunta)
+    
+    return opcionesPregunta
 }
 
-generarPregunta ();
+let pregunta = generarPregunta ();
+let paisCorrecto = pregunta[0]; //Almaceno la respuesta correcta en su propia variable
 
+//Mezclo las opciones para que la primera no sea siempre la correcta
+let opcionesMezcladas = mezclar(pregunta);
 
+function mezclar(arreglo) {
+    return [...arreglo].sort(() => Math.random() - 0.5);
+}
 
+console.log("pais correcto:"+ paisCorrecto.names.translations.spa);
+console.log("opciones:"+ opcionesMezcladas);
