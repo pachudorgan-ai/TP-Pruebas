@@ -47,13 +47,11 @@ function cargarPaises() {
             "Authorization": "Bearer " + key
         }
     })
-    .then(function (respuesta) {
-        return respuesta.json();
-    })
-    .then(function (datos) {
+    .then(respuesta => respuesta.json())
 
-        datos.data.objects.forEach(function (pais) {
-                paises.push(pais);
+    .then(datos => {
+        datos.data.objects.forEach(pais => {
+            paises.push(pais);
         });
 
         console.log("Países cargados:", paises.length);
@@ -68,11 +66,15 @@ function cargarPaises() {
             console.log(paises.length);
             
             //Como no todos los paises tienen cargada una bandera hago un if que recorra el array y se quede solo con aquellos que tienen una foto de la bandera.
-            paises.forEach (function (pais) {
+            paises.forEach (pais => {
             if (pais.flag.url_png != "") {
                 paisesConBandera.push(pais);
             }})
             console.log (paisesConBandera.length);
+
+            let pregunta = generarPregunta ();
+            let paisCorrecto = pregunta[0]; //Almaceno la respuesta correcta en su propia variable
+            let opcionesMezcladas = mezclar(pregunta);
         }})
 }
 cargarPaises ();
@@ -102,12 +104,8 @@ function generarPregunta () {
     return opcionesPregunta
 }
 
-let pregunta = generarPregunta ();
-let paisCorrecto = pregunta[0]; //Almaceno la respuesta correcta en su propia variable
 
 //Mezclo las opciones para que la primera no sea siempre la correcta
-let opcionesMezcladas = mezclar(pregunta);
-
 function mezclar(arreglo) {
     return [...arreglo].sort(() => Math.random() - 0.5);
 }
