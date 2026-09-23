@@ -83,7 +83,7 @@ function generarPregunta () {
 
     //Se determina aleatoriamente el pais correcto y se guarda en la primera posicion del array
     let numeroCorrecto = Math.floor(Math.random()*paisesConBandera.length);
-    let paisCorrecto = paisesConBandera[numero];
+    let paisCorrecto = paisesConBandera[numeroCorrecto];
 
     opcionesPregunta.push(paisCorrecto);
 
