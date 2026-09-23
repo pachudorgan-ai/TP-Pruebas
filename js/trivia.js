@@ -67,15 +67,21 @@ function cargarPaises() {
             
             //Como no todos los paises tienen cargada una bandera hago un if que recorra el array y se quede solo con aquellos que tienen una foto de la bandera.
             paises.forEach (pais => {
-            if (pais.flag.url_png != "") {
-                paisesConBandera.push(pais);
+                if (pais.flag.url_png != "") {
+                    paisesConBandera.push(pais);
             }})
             console.log (paisesConBandera.length);
 
             let pregunta = generarPregunta ();
             let paisCorrecto = pregunta[0]; //Almaceno la respuesta correcta en su propia variable
             let opcionesMezcladas = mezclar(pregunta);
-        }})
+
+            console.log ('la opcion correcta es' + paisCorrecto.names.translations.spa);
+            opcionesPregunta.forEach(pais => {
+                console.log(pais.names.translations.spa);
+            });
+        }
+    })
 }
 cargarPaises ();
 
@@ -98,9 +104,6 @@ function generarPregunta () {
             opcionesPregunta.push(paisIncorrecto);
         }
     }
-    console.log ('la opcion correcta es' + paisCorrecto.names.translations.spa);
-    console.log ('opciones:' + opcionesPregunta)
-    
     return opcionesPregunta
 }
 
@@ -109,6 +112,3 @@ function generarPregunta () {
 function mezclar(arreglo) {
     return [...arreglo].sort(() => Math.random() - 0.5);
 }
-
-console.log("pais correcto:"+ paisCorrecto.names.translations.spa);
-console.log("opciones:"+ opcionesMezcladas);
