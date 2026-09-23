@@ -95,12 +95,21 @@ function generarPregunta () {
 
     opcionesPregunta.push(paisCorrecto);
 
-    //Se deterinan los otros paises para las opciones incorrectas, corroborando que no se repita el mismo pais de la opcion correcta. Luego se guardan tambien en el array.
+    //Se deterinan los otros paises para las opciones incorrectas,luego se guardan tambien en el array.
     while (opcionesPregunta.length < 4) {
         let numeroIncorrecto = Math.floor(Math.random()*paisesConBandera.length);
         let paisIncorrecto = paisesConBandera[numeroIncorrecto];
+        
+        //corroboro que no haya ninguna opcion repetida
+        let repetido = false;
 
-        if (paisIncorrecto != paisCorrecto) {
+        opcionesPregunta.forEach(pais => {
+            if (pais == paisIncorrecto) {
+                repetido = true;
+            }
+        });
+
+        if (repetido == false) {
             opcionesPregunta.push(paisIncorrecto);
         }
     }
