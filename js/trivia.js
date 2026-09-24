@@ -92,6 +92,14 @@ async function cargarPaises() {
             opciones.innerHTML += '<button type="button" name="' + pais.names.translations.spa.common + '">' + pais.names.translations.spa.common + '</button>';
             });
             console.log(opciones.innerHTML);
+
+            let botones = opciones.querySelectorAll('button');
+
+            botones.forEach(boton => {
+                boton.addEventListener('click', function () {
+                    console.log(boton.name);
+                });
+            });
         }
 
     } catch (error) {
