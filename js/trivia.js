@@ -95,12 +95,13 @@ async function cargarPaises() {
 
             let botones = opciones.querySelectorAll('button');
 
-            console.log(botones.length);
-
             botones.forEach(boton => {
                 boton.addEventListener('click', function () {
-                    console.log("Hiciste clic");
-                    console.log(boton.name);
+                    if (boton.name == pregunta.correcto.names.translations.spa.common) {
+                        console.log("Correcto");
+                    } else {
+                        console.log("Incorrecto");
+                    }
                 });
             });
         }
