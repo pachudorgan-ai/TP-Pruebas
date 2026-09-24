@@ -33,7 +33,7 @@ const botonReiniciar = document.querySelector ('#triviaReiniciar');
 
 // La API solo me permite pedir de hasta 25 paises asi que debo hacer varios pedidos agregando un offset que corre a los siguiente 25 paises
 let offset = 0;
-const key = "rc_live_ba599f658cb54d278c6fe3f42078a83b"; // esta api key esta restringida a ser usada solo con ciertas paginas como la pagina de github pages de este repositorio, por lo que no es un problema publicarla
+const key = 'rc_live_ba599f658cb54d278c6fe3f42078a83b'; // esta api key esta restringida a ser usada solo con ciertas paginas como la pagina de github pages de este repositorio, por lo que no es un problema publicarla
 
 let paises = [];
 let paisesConBandera = [];
@@ -45,7 +45,7 @@ let puntos = 0;
 //la funcion pide a la Api 25 paises, los convierte a formato json y los alamcena en el array de paises. Luego pregunta si quedan mas paises por pedir, si la respuesta es si, se agrega un +25 al offset y se hace un nuevo pedido. Esta suma al offset permita que se pida a partir del pais 26 y no se repitan los mismos de antes.
 async function cargarPaises() {
     try {
-        const url = "https://api.restcountries.com/countries/v5?offset=" + offset;
+        const url = 'https://api.restcountries.com/countries/v5?offset=' + offset;
 
         const respuesta = await fetch(url, {
             headers: {
@@ -55,7 +55,7 @@ async function cargarPaises() {
 
         //Verifica que no haya errores
         if (!respuesta.ok) {
-            throw new Error("No se pudieron cargar los países");
+            throw new Error('No se pudieron cargar los países');
         }
 
         const datos = await respuesta.json();
@@ -65,7 +65,7 @@ async function cargarPaises() {
             paises.push(pais);
         });
 
-        console.log("Países cargados:", paises.length);
+        console.log('Países cargados:', paises.length);
 
         if (datos.data.meta.more == true && paises.length < 250) {
 
@@ -74,7 +74,7 @@ async function cargarPaises() {
 
         } else {
 
-            console.log("Todos los países fueron cargados");
+            console.log('Todos los países fueron cargados');
             console.log(paises.length);
 
             //Como no todos los paises tienen cargada una bandera hago un if que recorra el array y se quede solo con aquellos que tienen una foto de la bandera.
@@ -102,11 +102,12 @@ async function cargarPaises() {
                 boton.addEventListener('click', function () {
                     if (boton.name == pregunta.correcto.names.translations.spa.common) {
                         puntos += 100;
-                        console.log("Correcto");
+                        console.log('Correcto');
                         console.log('puntos:'+ puntos)
                     } else {
                         vidas -= 1;
-                        console.log("Incorrecto");
+                        console.log('Incorrecto');
+                        console.log ('vidas:'+ vidas)
                     }
                 });
             });
@@ -114,7 +115,7 @@ async function cargarPaises() {
 
     } catch (error) {
 
-        console.log("Ocurrió un error:", error);
+        console.log('Ocurrió un error:', error);
 
     }
 }
