@@ -57,13 +57,13 @@ async function cargarPaises() {
 
         const datos = await respuesta.json();
 
+        //si no hay errores continua con la carga de todos los paises
         datos.data.objects.forEach(pais => {
             paises.push(pais);
         });
 
         console.log("Países cargados:", paises.length);
 
-        //si no hay errores continua con la carga de todos los paises
         if (datos.data.meta.more == true && paises.length < 250) {
 
             offset = offset + 25;
@@ -115,7 +115,7 @@ function generarPregunta () {
 
     opcionesIncorrectas.forEach(pais => {
         opcionesPregunta.push(pais);
-    }
+    });
 
     console.log (paisCorrecto.names.translations.spa);        
     opcionesPregunta.forEach(pais => {
