@@ -88,8 +88,8 @@ async function cargarPaises() {
             
             bandera.innerHTML = '<img src="' + pregunta.correcto.flag.url_png + '">'; //muestro en el HTML la bandera del pais correcto
             
-            pregunta.opciones.forEach(pais => { //agrego un boton al HTML por cada opcion
-                opciones.innerHTML += '<button type="button">' + pais.names.translations.spa.common + '</button>';
+            pregunta.opciones.forEach(pais => {
+            opciones.innerHTML += '<button type="button" name="' + pais.names.translations.spa.common + '">' + pais.names.translations.spa.common + '</button>';
             });
             console.log(opciones.innerHTML);
         }
