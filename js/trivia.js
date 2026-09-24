@@ -37,7 +37,6 @@ const key = "rc_live_ba599f658cb54d278c6fe3f42078a83b"; // esta api key esta res
 let paises = [];
 let paisesConBandera = [];
 let paisesUsados = []; //almacena los paises cuyas banderas se usaron para evitar repetir preguntas
-let paisesDisponibles = []; //almacena los paises cuyas banderas no se usaron aun
 
 //la funcion pide a la Api 25 paises, los convierte a formato json y los alamcena en el array de paises. Luego pregunta si quedan mas paises por pedir, si la respuesta es si, se agrega un +25 al offset y se hace un nuevo pedido. Esta suma al offset permita que se pida a partir del pais 26 y no se repitan los mismos de antes.
 async function cargarPaises() {
@@ -85,8 +84,6 @@ async function cargarPaises() {
 
             let pregunta = generarPregunta();
             let paisCorrecto = pregunta[0]; //Almaceno la respuesta correcta en su propia variable
-            let opcionesMezcladas = mezclar(pregunta);
-            console.log (opcionesMezcladas.names.translations.spa.common);
 
         }
 
@@ -104,7 +101,7 @@ function generarPregunta () {
     
     let opcionesPregunta = [];
 
-    paisesDisponibles = buscarDisponibles (paisesConBandera);
+    let paisesDisponibles = buscarDisponibles (paisesConBandera);
 
     let paisCorrecto = elegirCorrecto(paisesDisponibles);
 
@@ -122,12 +119,18 @@ function generarPregunta () {
         console.log(pais.names.translations.spa.common);
     });
 
-    return opcionesPregunta;
+    let opcionesMezcladas = mezclar(opcionesPregunta);
+    console.log (opcionesMezcladas);
+    
+    return opcionesMezcladas;
 }
 
 
 //Busco los paises que todavia no fueron usados como respuesta correcta
 function buscarDisponibles(arreglo) {
+
+    let paisesDisponibles = []; //almacena los paises cuyas banderas no se usaron aun
+
     arreglo.forEach(pais => {
         if (!paisesUsados.includes(pais)) {
             paisesDisponibles.push(pais);
