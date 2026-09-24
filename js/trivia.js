@@ -86,7 +86,7 @@ async function cargarPaises() {
             let pregunta = generarPregunta();
             let paisCorrecto = pregunta[0]; //Almaceno la respuesta correcta en su propia variable
             let opcionesMezcladas = mezclar(pregunta);
-            console.log (opcionesMezcladas);
+            console.log (opcionesMezcladas.names.translations.spa.common);
 
         }
 
@@ -117,9 +117,9 @@ function generarPregunta () {
         opcionesPregunta.push(pais);
     });
 
-    console.log (paisCorrecto.names.translations.spa);        
+    console.log (paisCorrecto.names.translations.spa.common);        
     opcionesPregunta.forEach(pais => {
-        console.log(pais.names.translations.spa);
+        console.log(pais.names.translations.spa.common);
     });
 
     return opcionesPregunta;
