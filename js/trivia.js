@@ -36,6 +36,8 @@ const key = "rc_live_ba599f658cb54d278c6fe3f42078a83b"; // esta api key esta res
 
 let paises = [];
 let paisesConBandera = [];
+let paisesUsados = []; //almacena los paises cuyas banderas se usaron para evitar repetir preguntas
+let paisesDisponibles = []; //almacena los paises cuyas banderas no se usaron aun
 
 //la funcion pide a la Api 25 paises, los convierte a formato json y los alamcena en el array de paises. Luego pregunta si quedan mas paises por pedir, si la respuesta es si, se agrega un +25 al offset y se hace un nuevo pedido. Esta suma al offset permita que se pida a partir del pais 26 y no se repitan los mismos de antes.
 async function cargarPaises() {
@@ -98,39 +100,71 @@ cargarPaises ();
 
 //Creo una funcion para generar los 4 paises utilizados en la opcion multiple, incluyendo el pais con la bandera correcta
 function generarPregunta () {
+    
     let opcionesPregunta = [];
 
-    //Se determina aleatoriamente el pais correcto y se guarda en la primera posicion del array
-    let numeroCorrecto = Math.floor(Math.random()*paisesConBandera.length);
-    let paisCorrecto = paisesConBandera[numeroCorrecto];
+    paisesDisponibles = buscarDisponibles (paisesConBandera);
+
+    let paisCorrecto = elegirCorrecto(paisesDisponibles);
 
     opcionesPregunta.push(paisCorrecto);
+    paisesUsados.push(paisCorrecto);
 
-    //Se deterinan los otros paises para las opciones incorrectas,luego se guardan tambien en el array.
-    while (opcionesPregunta.length < 4) {
-        let numeroIncorrecto = Math.floor(Math.random()*paisesConBandera.length);
-        let paisIncorrecto = paisesConBandera[numeroIncorrecto];
+    let opcionesIncorrectas = buscarIncorrectos(paisesConBandera, paisCorrecto);
+
+    console.log (paisCorrecto.names.translations.spa);
         
-        //corroboro que no haya ninguna opcion repetida
+    opcionesPregunta.forEach(pais => {
+        console.log(pais.names.translations.spa);
+    });
+
+    return opcionesPregunta
+}
+
+
+//Busco los paises que todavia no fueron usados como respuesta correcta
+function buscarDisponibles(arreglo) {
+    arreglo.forEach(pais => {
+        if (!paisesUsados.includes(pais)) {
+            paisesDisponibles.push(pais);
+        }
+    });
+    return paisesDisponibles;
+}
+
+
+//Se determina aleatoriamente el pais correcto y se guarda en la primera posicion del array
+function elegirCorrecto (arreglo) { 
+    let numeroCorrecto = Math.floor(Math.random()*arreglo.length);
+    let paisCorrecto = arreglo[numeroCorrecto];
+
+    return paisCorrecto;
+}
+
+//Se determinan los otros paises para las opciones incorrectas,luego se guardan tambien en el array.
+function buscarIncorrectos(arreglo, correcto) {
+    let opcionesIncorrectas = [];
+
+    while (opcionesIncorrectas.length < 3) {
+
+        let numero = Math.floor(Math.random() * arreglo.length);
+        let paisIncorrecto = arreglo[numero];
+
         let repetido = false;
 
-        opcionesPregunta.forEach(pais => {
-            if (pais == paisIncorrecto) {
+        opcionesIncorrectas.forEach(pais => {
+            if (pais == paisIncorrecto || pais == correcto) {
                 repetido = true;
             }
         });
 
         if (repetido == false) {
-            opcionesPregunta.push(paisIncorrecto);
+            opcionesIncorrectas.push(paisIncorrecto);
         }
     }
-        console.log (paisCorrecto.names.translations.spa);
-        opcionesPregunta.forEach(pais => {
-            console.log(pais.names.translations.spa);
-        });
-    return opcionesPregunta
-}
 
+    return opcionesIncorrectas;
+}
 
 //Mezclo las opciones para que la primera no sea siempre la correcta
 function mezclar(arreglo) {
