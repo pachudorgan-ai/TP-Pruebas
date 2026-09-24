@@ -32,7 +32,7 @@ const botonReiniciar = document.querySelector ('#triviaReiniciar');
 
 // La API solo me permite pedir de hasta 25 paises asi que debo hacer varios pedidos agregando un offset que corre a los siguiente 25 paises
 let offset = 0;
-const key = "rc_live_ba599f658cb54d278c6fe3f42078a83b"; // esta api key esta restringida a ser usada solo con ciertas paginas como la pagina de github pages de este repositorio, por lo que no es un problema publicarla
+const key = "key"; // esta api key esta restringida a ser usada solo con ciertas paginas como la pagina de github pages de este repositorio, por lo que no es un problema publicarla
 
 let paises = [];
 let paisesConBandera = [];
@@ -86,6 +86,7 @@ async function cargarPaises() {
             let pregunta = generarPregunta();
             let paisCorrecto = pregunta[0]; //Almaceno la respuesta correcta en su propia variable
             let opcionesMezcladas = mezclar(pregunta);
+            console.log (opcionesMezcladas);
 
         }
 
@@ -112,13 +113,16 @@ function generarPregunta () {
 
     let opcionesIncorrectas = buscarIncorrectos(paisesConBandera, paisCorrecto);
 
-    console.log (paisCorrecto.names.translations.spa);
-        
+    opcionesIncorrectas.forEach(pais => {
+        opcionesPregunta.push(pais);
+    }
+
+    console.log (paisCorrecto.names.translations.spa);        
     opcionesPregunta.forEach(pais => {
         console.log(pais.names.translations.spa);
     });
 
-    return opcionesPregunta
+    return opcionesPregunta;
 }
 
 
