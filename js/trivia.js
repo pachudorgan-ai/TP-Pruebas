@@ -89,9 +89,6 @@ async function cargarPaises() {
             let pregunta = generarPregunta();
             let paisCorrecto = pregunta.correcto; //Almaceno la respuesta correcta en su propia variable
             
-            bandera.innerHTML = '<img src="' + pregunta.correcto.flag.url_png + '">'; //muestro en el HTML la bandera del pais correcto
-
-            mostrarOpciones(pregunta);
         }
     } catch (error) {
         console.log('Ocurrió un error:', error);
@@ -118,18 +115,18 @@ function generarPregunta () {
         opcionesPregunta.push(pais);
     });
 
-    /*console.log (paisCorrecto.names.translations.spa.common);        
-    opcionesPregunta.forEach(pais => {
-        console.log(pais.names.translations.spa.common);
-    });*/
-
     let opcionesMezcladas = mezclar(opcionesPregunta);
-    //console.log (opcionesMezcladas);
-    
-    return {
+
+    let pregunta {
     opciones: opcionesMezcladas,
     correcto: paisCorrecto
     };
+
+    //muestro en el HTML la bandera a adivinar
+    bandera.innerHTML = '<img src="' + pregunta.correcto.flag.url_png + '">';
+    mostrarOpciones(pregunta);
+
+    return pregunta;
 }
 
 
@@ -188,6 +185,8 @@ function mezclar(arreglo) {
 //Creo 4 botones en el HTML con las opciones. Al hacer click en alguno se deshabilitan todos. Finalmente corroboro la respuesta correcta y dependiendo el resultado se suman puntos o se resta una vida.
 function mostrarOpciones(pregunta) { 
 
+    opciones.innerHTML = "";
+       
     //Creo los 4 botones correspondientes a cada pais
     pregunta.opciones.forEach(pais => {
         opciones.innerHTML += '<button type="button" name="' + pais.names.translations.spa.common + '">' + pais.names.translations.spa.common + '</button>';
@@ -217,7 +216,15 @@ function mostrarOpciones(pregunta) {
             botones.forEach(boton => {
                 boton.disabled = true;
             });
+            
+            //habilito el boton para la siguiente pregunta
+            botonSiguiente.hidden = false;
 
         });
     });
 }
+
+//Habilito la funcionalidad del boton para la siguiente pregunta
+botonSiguiente.addEventListener('click', function () {
+    generarPregunta();
+    botonSiguiente.hidden = true;
