@@ -227,13 +227,13 @@ function mostrarOpciones(pregunta) {
             //Corroboro que queden vidas y sino voy al final
             if (vidasJugador == 0) {
                 console.log('Fin del juego');
-                terminarJuego();
+                terminarJuego('No hay más vidas disponibles!');
             }
 
             //corroboro que queden preguntas y sino voy al final
             if (paisesUsados.length == paisesConBandera.length) {
                 console.log('Se adivinaron todos los países');
-                terminarJuego();
+                terminarJuego('Adivinaste todos los países!');
             }
 
             //Deshabilito los botones
@@ -262,12 +262,12 @@ botonSiguiente.addEventListener('click', function () {
 =========================*/
 
 //Habilito el fin del juego al llegar a 0 vidas o terminar las preguntas.
-function terminarJuego() {
+function terminarJuego(mensaje) {
 
     juego.hidden = true;
     final.hidden = false;
 
-    resultado.innerHTML = '¡Se terminaron tus vidas!';
+    resultado.innerHTML = 'Juego terminado: '+ mensaje;
     puntaje.innerHTML = 'Puntaje final: ' + puntos;
 
 }
