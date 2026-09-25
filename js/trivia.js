@@ -41,6 +41,7 @@ let paisesUsados = []; //almacena los paises cuyas banderas se usaron para evita
 
 let vidasJugador = 3;
 let puntos = 0;
+let numeroPregunta = 0;
 
 //la funcion pide a la Api 25 paises, los convierte a formato json y los alamcena en el array de paises. Luego pregunta si quedan mas paises por pedir, si la respuesta es si, se agrega un +25 al offset y se hace un nuevo pedido. Esta suma al offset permita que se pida a partir del pais 26 y no se repitan los mismos de antes.
 async function cargarPaises() {
@@ -99,7 +100,13 @@ cargarPaises ();
 
 //Creo una funcion para generar los 4 paises utilizados en la opcion multiple, incluyendo el pais con la bandera correcta
 function generarPregunta () {
-    
+
+    numeroPregunta ++;
+
+    progreso.innerHTML = 'Pregunta' + numeroPregunta;
+    vidas.innerHTML = 'Vidas: ' + vidasJugador;
+    contadorCorrectas.innerHTML = 'Puntos: ' + puntos;
+ 
     let opcionesPregunta = [];
 
     let paisesDisponibles = buscarDisponibles (paisesConBandera);
@@ -211,6 +218,10 @@ function mostrarOpciones(pregunta) {
                 console.log('Vidas:', vidasJugador);
 
             }
+            
+            //Actualizo el contador de vidas y puntaje
+            vidas.innerHTML = 'Vidas: ' + vidasJugador;
+            contadorCorrectas.innerHTML = 'Puntos: ' + puntos;
 
             //Deshabilito los botones
             botones.forEach(boton => {
