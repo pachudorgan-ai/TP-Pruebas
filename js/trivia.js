@@ -90,28 +90,8 @@ async function cargarPaises() {
             let paisCorrecto = pregunta.correcto; //Almaceno la respuesta correcta en su propia variable
             
             bandera.innerHTML = '<img src="' + pregunta.correcto.flag.url_png + '">'; //muestro en el HTML la bandera del pais correcto
-            
-            pregunta.opciones.forEach(pais => {
-            opciones.innerHTML += '<button type="button" name="' + pais.names.translations.spa.common + '">' + pais.names.translations.spa.common + '</button>';
-            });
-            console.log(opciones.innerHTML);
 
-            let botones = opciones.querySelectorAll('button');
-
-            botones.forEach(boton => {
-                boton.addEventListener('click', function () {
-                    if (boton.name == pregunta.correcto.names.translations.spa.common) {
-                        puntos += 100;
-                        console.log('Correcto');
-                        console.log('puntos:'+ puntos)
-                    } else {
-                        vidas -= 1;
-                        console.log('Incorrecto');
-                        console.log ('vidas:'+ vidas)
-                    }
-                });
-            });
-        }
+            mostrarOpciones(pregunta);
 
     } catch (error) {
 
@@ -205,4 +185,41 @@ function buscarIncorrectos(arreglo, correcto) {
 //Mezclo las opciones para que la primera no sea siempre la correcta
 function mezclar(arreglo) {
     return [...arreglo].sort(() => Math.random() - 0.5);
+}
+
+//Creo 4 botones en el HTML con las opciones. Al hacer click en alguno se deshabilitan todos. Finalmente corroboro la respuesta correcta y dependiendo el resultado se suman puntos o se resta una vida.
+function mostrarOpciones(pregunta) { 
+
+    //Creo los 4 botones correspondientes a cada pais
+    pregunta.opciones.forEach(pais => {
+        opciones.innerHTML += '<button type="button" name="' + pais.names.translations.spa.common + '">' + pais.names.translations.spa.common + '</button>';
+    });
+
+    let botones = opciones.querySelectorAll('button');
+
+    //Corroboro la respuesta
+    botones.forEach(boton => {
+        boton.addEventListener('click', function () {
+
+            if (boton.name == pregunta.correcto.names.translations.spa.common) {
+
+                puntos = puntos + 100;
+                console.log("Correcto");
+                console.log("Puntos:", puntos);
+
+            } else {
+
+                vidasJugador = vidasJugador - 1;
+                console.log("Incorrecto");
+                console.log("Vidas:", vidasJugador);
+
+            }
+
+            //Deshabilito los botones
+            botones.forEach(boton => {
+                boton.disabled = true;
+            });
+
+        });
+    });
 }
