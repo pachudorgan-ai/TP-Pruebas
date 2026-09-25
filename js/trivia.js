@@ -104,6 +104,7 @@ cargarPaises ();
 botonComenzar.addEventListener ('click', funcion() {
     inicio.hidden =true;
     juego.hidden = false;
+    
     generarPregunta();
 })
 
