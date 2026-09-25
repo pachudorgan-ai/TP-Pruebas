@@ -117,7 +117,7 @@ function generarPregunta () {
 
     let opcionesMezcladas = mezclar(opcionesPregunta);
 
-    let pregunta {
+    let pregunta = {
     opciones: opcionesMezcladas,
     correcto: paisCorrecto
     };
@@ -186,7 +186,7 @@ function mezclar(arreglo) {
 function mostrarOpciones(pregunta) { 
 
     opciones.innerHTML = "";
-       
+
     //Creo los 4 botones correspondientes a cada pais
     pregunta.opciones.forEach(pais => {
         opciones.innerHTML += '<button type="button" name="' + pais.names.translations.spa.common + '">' + pais.names.translations.spa.common + '</button>';
