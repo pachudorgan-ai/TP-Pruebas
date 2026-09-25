@@ -46,6 +46,8 @@ let numeroPregunta = 0;
 
 //la funcion pide a la Api 25 paises, los convierte a formato json y los alamcena en el array de paises. Luego pregunta si quedan mas paises por pedir, si la respuesta es si, se agrega un +25 al offset y se hace un nuevo pedido. Esta suma al offset permita que se pida a partir del pais 26 y no se repitan los mismos de antes.
 async function cargarPaises() {
+    estado.innerHTML = 'Cargando preguntas...';
+
     try {
         const url = 'https://api.restcountries.com/countries/v5?offset=' + offset;
 
@@ -58,6 +60,7 @@ async function cargarPaises() {
         //Verifica que no haya errores
         if (!respuesta.ok) {
             throw new Error('No se pudieron cargar los países');
+            estado.innerHTML = 'No se pudieron cargar las preguntas.';
         }
 
         const datos = await respuesta.json();
@@ -88,6 +91,8 @@ async function cargarPaises() {
 
             console.log(paisesConBandera.length);
 
+            estado.innerHTML = '';
+
             let pregunta = generarPregunta();
             let paisCorrecto = pregunta.correcto; //Almaceno la respuesta correcta en su propia variable
             
@@ -101,6 +106,8 @@ cargarPaises ();
 
 //Creo una funcion para generar los 4 paises utilizados en la opcion multiple, incluyendo el pais con la bandera correcta
 function generarPregunta () {
+
+    botonSiguiente.hidden = true;
 
     numeroPregunta ++;
 
@@ -206,18 +213,15 @@ function mostrarOpciones(pregunta) {
     botones.forEach(boton => {
         boton.addEventListener('click', function () {
 
+            //se muestra al jugador si su respuesta fue correcta o incorrecta agregando una clase al boton que luego le pondra un color diferente.
+            //Dependiendo el resultado sumo puntos o resto vidas
             if (boton.name == pregunta.correcto.names.translations.spa.common) {
-
                 puntos += 100;
-                console.log('Correcto');
-                console.log('Puntos:', puntos);
-
+                boton.classList.add ('triviaCorrecto')
             } else {
 
                 vidasJugador -= 1;
-                console.log('Incorrecto');
-                console.log('Vidas:', vidasJugador);
-
+                boton.classList.add ('triviaIncorrecto')
             }
             
             //Actualizo el contador de vidas y puntaje
@@ -238,6 +242,9 @@ function mostrarOpciones(pregunta) {
 
             //Deshabilito los botones
             botones.forEach(boton => {
+                if (boton.name == pregunta.correcto.names.translations.spa.common) {
+                    boton.classList.add('correcto');
+                }
                 boton.disabled = true;
             });
             
