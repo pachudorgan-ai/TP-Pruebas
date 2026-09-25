@@ -92,11 +92,9 @@ async function cargarPaises() {
             bandera.innerHTML = '<img src="' + pregunta.correcto.flag.url_png + '">'; //muestro en el HTML la bandera del pais correcto
 
             mostrarOpciones(pregunta);
-
+        }
     } catch (error) {
-
         console.log('Ocurrió un error:', error);
-
     }
 }
 
