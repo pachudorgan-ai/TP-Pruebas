@@ -12,6 +12,7 @@ const progreso = document.querySelector ('#triviaProgreso');
 const vidas = document.querySelector ('#triviaVidas');
 const contadorCorrectas = document.querySelector ('#triviaCorrectas');
 const estado = document.querySelector ('#triviaEstado');
+juego.hidden = true;
 
 const preguntas = document.querySelector ('#triviaPreguntas');
 const titulo = document.querySelector ('#triviaBandera');
@@ -92,10 +93,6 @@ async function cargarPaises() {
             console.log(paisesConBandera.length);
 
             estado.innerHTML = '';
-
-            let pregunta = generarPregunta();
-            let paisCorrecto = pregunta.correcto; //Almaceno la respuesta correcta en su propia variable
-            
         }
     } catch (error) {
         console.log('Ocurrió un error:', error);
@@ -103,6 +100,12 @@ async function cargarPaises() {
 }
 
 cargarPaises ();
+
+botonComenzar.addEventListener ('click', funcion(){
+    inicio.hidden =true;
+    juego.hidden = false;
+    generarPregunta();
+})
 
 //Creo una funcion para generar los 4 paises utilizados en la opcion multiple, incluyendo el pais con la bandera correcta
 function generarPregunta () {
@@ -119,7 +122,7 @@ function generarPregunta () {
 
     let paisesDisponibles = buscarDisponibles (paisesConBandera);
 
-    let paisCorrecto = elegirCorrecto(paisesDisponibles);
+    let paisCorrecto = elegirCorrecto(paisesDisponibles); //Almaceno la respuesta correcta en su propia variable
 
     opcionesPregunta.push(paisCorrecto);
     paisesUsados.push(paisCorrecto);
