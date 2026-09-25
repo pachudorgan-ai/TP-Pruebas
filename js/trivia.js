@@ -39,7 +39,7 @@ let paises = [];
 let paisesConBandera = [];
 let paisesUsados = []; //almacena los paises cuyas banderas se usaron para evitar repetir preguntas
 
-let vidas = 3;
+let vidasJugador = 3;
 let puntos = 0;
 
 //la funcion pide a la Api 25 paises, los convierte a formato json y los alamcena en el array de paises. Luego pregunta si quedan mas paises por pedir, si la respuesta es si, se agrega un +25 al offset y se hace un nuevo pedido. Esta suma al offset permita que se pida a partir del pais 26 y no se repitan los mismos de antes.
@@ -203,15 +203,15 @@ function mostrarOpciones(pregunta) {
 
             if (boton.name == pregunta.correcto.names.translations.spa.common) {
 
-                puntos = puntos + 100;
-                console.log("Correcto");
-                console.log("Puntos:", puntos);
+                puntos += 100;
+                console.log('Correcto');
+                console.log('Puntos:', puntos);
 
             } else {
 
-                vidasJugador = vidasJugador - 1;
-                console.log("Incorrecto");
-                console.log("Vidas:", vidasJugador);
+                vidasJugador -= 1;
+                console.log('Incorrecto');
+                console.log('Vidas:', vidasJugador);
 
             }
 
