@@ -228,3 +228,4 @@ function mostrarOpciones(pregunta) {
 botonSiguiente.addEventListener('click', function () {
     generarPregunta();
     botonSiguiente.hidden = true;
+})
