@@ -101,10 +101,10 @@ async function cargarPaises() {
 
 cargarPaises ();
 
-botonComenzar.addEventListener ('click', funcion() {
+botonComenzar.addEventListener ('click', function() {
     inicio.hidden =true;
     juego.hidden = false;
-    
+
     generarPregunta();
 })
 
