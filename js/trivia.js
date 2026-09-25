@@ -93,19 +93,18 @@ async function cargarPaises() {
             console.log(paisesConBandera.length);
 
             estado.innerHTML = '';
+            generarPregunta();
         }
     } catch (error) {
         console.log('Ocurrió un error:', error);
     }
 }
 
-cargarPaises ();
-
 botonComenzar.addEventListener ('click', function() {
     inicio.hidden =true;
     juego.hidden = false;
+    cargarPaises ();
 
-    generarPregunta();
 })
 
 //Creo una funcion para generar los 4 paises utilizados en la opcion multiple, incluyendo el pais con la bandera correcta
