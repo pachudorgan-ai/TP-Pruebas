@@ -24,6 +24,7 @@ const resultado = document.querySelector ('#triviaResultado');
 const puntaje = document.querySelector ('#triviaPuntaje');
 const jugador = document.querySelector ('#triviaJugador');
 const botonReiniciar = document.querySelector ('#triviaReiniciar');
+final.hidden = true;
 
 //=======================================
 //JUEGO PRINCIPAL: CREACION DE PREGUNTAS
@@ -103,7 +104,7 @@ function generarPregunta () {
 
     numeroPregunta ++;
 
-    progreso.innerHTML = 'Pregunta' + numeroPregunta;
+    progreso.innerHTML = 'Pregunta ' + numeroPregunta;
     vidas.innerHTML = 'Vidas: ' + vidasJugador;
     contadorCorrectas.innerHTML = 'Puntos: ' + puntos;
  
@@ -222,6 +223,18 @@ function mostrarOpciones(pregunta) {
             //Actualizo el contador de vidas y puntaje
             vidas.innerHTML = 'Vidas: ' + vidasJugador;
             contadorCorrectas.innerHTML = 'Puntos: ' + puntos;
+            
+            //Corroboro que queden vidas y sino voy al final
+            if (vidasJugador == 0) {
+                console.log('Fin del juego');
+                terminarJuego();
+            }
+
+            //corroboro que queden preguntas y sino voy al final
+            if (paisesUsados.length == paisesConBandera.length) {
+                console.log('Se adivinaron todos los países');
+                terminarJuego();
+            }
 
             //Deshabilito los botones
             botones.forEach(boton => {
@@ -233,10 +246,28 @@ function mostrarOpciones(pregunta) {
 
         });
     });
-}
+};
 
 //Habilito la funcionalidad del boton para la siguiente pregunta
 botonSiguiente.addEventListener('click', function () {
+    
+    if (vidasJugador > 0) {
     generarPregunta();
     botonSiguiente.hidden = true;
-})
+    };
+});
+
+/*=======================
+     FIN DEL JUEGO
+=========================*/
+
+//Habilito el fin del juego al llegar a 0 vidas o terminar las preguntas.
+function terminarJuego() {
+
+    juego.hidden = true;
+    final.hidden = false;
+
+    resultado.innerHTML = '¡Se terminaron tus vidas!';
+    puntaje.innerHTML = 'Puntaje final: ' + puntos;
+
+}
