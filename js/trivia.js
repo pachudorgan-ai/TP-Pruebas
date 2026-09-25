@@ -271,3 +271,18 @@ function terminarJuego(mensaje) {
     puntaje.innerHTML = 'Puntaje final: ' + puntos;
 
 }
+
+//Boton para reiniciar el juego, resetea todos los puntajes y vida y vuelve a mostrar una pregunta.
+
+botonReiniciar.addEventListener('click', function () {
+
+    vidasJugador = 3;
+    puntos = 0;
+    numeroPregunta = 0;
+    paisesUsados = [];
+
+    juego.hidden = false;
+    final.hidden = true;
+
+    generarPregunta()
+});
