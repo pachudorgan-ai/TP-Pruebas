@@ -243,7 +243,7 @@ function mostrarOpciones(pregunta) {
             //Deshabilito los botones
             botones.forEach(boton => {
                 if (boton.name == pregunta.correcto.names.translations.spa.common) {
-                    boton.classList.add('correcto');
+                    boton.classList.add('triviaCorrecto');
                 }
                 boton.disabled = true;
             });
