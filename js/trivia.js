@@ -14,6 +14,7 @@ const contadorCorrectas = document.querySelector ('#triviaCorrectas');
 const estado = document.querySelector ('#triviaEstado');
 juego.hidden = true;
 
+const titulo = document.querySelector ('#triviaTitulo');
 const preguntas = document.querySelector ('#triviaPreguntas');
 const bandera = document.querySelector ('#imgBandera');
 const opciones = document.querySelector ('#triviaOpciones');
@@ -62,6 +63,7 @@ const key = 'rc_live_ba599f658cb54d278c6fe3f42078a83b'; // esta api key esta res
 
 async function cargarPaises() {
     estado.innerHTML = 'Cargando preguntas...';
+    titulo.innerHTML = '';
 
     try {
         const url = 'https://api.restcountries.com/countries/v5?offset=' + offset;
@@ -109,6 +111,7 @@ async function cargarPaises() {
             console.log(paisesConBandera.length);
 
             estado.innerHTML = '';
+            titulo.innerHTML = '¿A que país pertenece la siguiente bandera?';
             generarPregunta();
         }
     } catch (error) {
