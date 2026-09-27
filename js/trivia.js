@@ -28,15 +28,9 @@ const nombreJugador = document.querySelector('#triviaNombre');
 const botonReiniciar = document.querySelector ('#triviaReiniciar');
 final.hidden = true;
 
-//=======================================
-//JUEGO PRINCIPAL: CREACION DE PREGUNTAS
-//=======================================
-
-////IDEA PRINCIPAL: hago el pedido de los paises con sus respectivas banderas y los guardo en un array de objetos
-
-// La API solo me permite pedir de hasta 25 paises asi que debo hacer varios pedidos agregando un offset que corre a los siguiente 25 paises
-let offset = 0;
-const key = 'rc_live_ba599f658cb54d278c6fe3f42078a83b'; // esta api key esta restringida a ser usada solo con ciertas paginas como la pagina de github pages de este repositorio, por lo que no es un problema publicarla
+/*=====================
+ CREACION DE VARIABLES
+======================= */
 
 let paises = [];
 let paisesConBandera = [];
@@ -46,13 +40,32 @@ let vidasJugador = 3;
 let puntos = 0;
 let numeroPregunta = 0;
 
-//la funcion pide a la Api 25 paises, los convierte a formato json y los alamcena en el array de paises. Luego pregunta si quedan mas paises por pedir, si la respuesta es si, se agrega un +25 al offset y se hace un nuevo pedido. Esta suma al offset permita que se pida a partir del pais 26 y no se repitan los mismos de antes.
+/*======================
+COMIENZO DEL JUEGO
+======================= */
+
+botonComenzar.addEventListener ('click', function() {
+    inicio.hidden =true;
+    juego.hidden = false;
+    cargarPaises ();
+
+})
+
+
+/*===================
+PEDIDO A LA API
+=====================*/
+
+
+let offset = 0; // La API solo me permite pedir de hasta 25 paises asi que debo hacer varios pedidos agregando un offset que corre a los siguiente 25 paises
+const key = 'rc_live_ba599f658cb54d278c6fe3f42078a83b'; // esta api key esta restringida a ser usada solo con ciertas paginas como la pagina de github pages de este repositorio, por lo que no es un problema publicarla
+
 async function cargarPaises() {
     estado.innerHTML = 'Cargando preguntas...';
 
     try {
         const url = 'https://api.restcountries.com/countries/v5?offset=' + offset;
-
+        //pide a la Api 25 paises
         const respuesta = await fetch(url, {
             headers: {
                 "Authorization": "Bearer " + key
@@ -65,15 +78,17 @@ async function cargarPaises() {
             estado.innerHTML = 'No se pudieron cargar las preguntas.';
         }
 
+        //los convierte a formato json
         const datos = await respuesta.json();
 
-        //si no hay errores continua con la carga de todos los paises
+        //si no hay errores continua con la carga de todos los paises Y los alamcena en el array de paises
         datos.data.objects.forEach(pais => {
             paises.push(pais);
         });
 
         console.log('Países cargados:', paises.length);
 
+        //pregunta si quedan mas paises por pedir, si la respuesta es si, se agrega un +25 al offset y se hace un nuevo pedido. Esta suma al offset permita que se pida a partir del pais 26 y no se repitan los mismos de antes.
         if (datos.data.meta.more == true && paises.length < 250) {
 
             offset = offset + 25;
@@ -101,12 +116,9 @@ async function cargarPaises() {
     }
 }
 
-botonComenzar.addEventListener ('click', function() {
-    inicio.hidden =true;
-    juego.hidden = false;
-    cargarPaises ();
-
-})
+//=======================================
+//JUEGO PRINCIPAL: CREACION DE PREGUNTAS
+//=======================================
 
 //Creo una funcion para generar los 4 paises utilizados en la opcion multiple, incluyendo el pais con la bandera correcta
 function generarPregunta () {
@@ -269,7 +281,7 @@ botonSiguiente.addEventListener('click', function () {
 });
 
 /*=======================
-     FIN DEL JUEGO
+    FIN DEL JUEGO
 =========================*/
 
 //Habilito el fin del juego al llegar a 0 vidas o terminar las preguntas.
@@ -283,13 +295,18 @@ function terminarJuego(mensaje) {
 
 }
 
+//Almaceno el nombre del jugador y su puntaje en el local storage
 jugador.addEventListener('submit', function (event) {
-
     event.preventDefault();
 
     let nombre = nombreJugador.value;
 
-    localStorage.setItem('triviaNombre', nombre);
+    let resultadoJugador = {
+        nombre: nombre,
+        puntaje: puntos
+    };
+
+    localStorage.setItem('triviaResultado', JSON.stringify(resultadoJugador));
 
 });
 
