@@ -6,67 +6,75 @@
         <link href="../css/estilos.css" rel="stylesheet">
     </head>
     <body>
-        <header>
-            <!--h1 con nombre de la pagina-->
-            <nav> 
-                <ul>
-                    <li><a href="../index.html">INDEX</a></li>
-                    <li><a href="cartas.html">CARTAS</a></li>
-                    <li><a href="dados.html">DADOS</a></li>
-                    <li><a href="trivia.html">TRIVIA</a></li>
-                    <li><a href="../puntajes.html">PUNTAJES</a></li>
-                    <li><a href="../informacion.html">INFORMACION</a></li>
-                </ul>
-            </nav>
-        </header>
-        <main>
-            <h2>Trivia: Adivina la bandera!</h2>
-            
-            <!--INSTRUCCIONES DE JUEGO Y BOTON PARA EMPEZAR-->
-            <section id="triviaInicio">
-                <h3>¿Cómo jugar?</h3>
-                <p>El juego consiste en adivinar el país al cual le pertenece la bandera. Comenzando con <strong>tres vidas</strong>, se presentara una bandera con cuatro opciones de paises y se deberá elegir el que corresponde. Por cada respuesta correcta se suman <strong>+10 puntos</strong> y por cada respuesta incorrecta se pierde una vida. <strong>El juego termina cuando se acaban todas las vidas o cuando se logran adivinar todas las banderas.</strong></p>
-                <button id="triviaComenzar" type="button">Comenzar!</button>
-            </section>
+        <div id="contenedor">
+            <header>
+                <!--h1 con nombre de la pagina-->
+                <nav> 
+                    <div class="navInicio">
+                        <a href="../index.html">Inicio</a>
+                    </div>
 
-            <!--BLOQUE DONDE VA EL JUEGO-->
-            <section id="triviaJuego">
+                    <div class="navJuegos">
+                        <a href="../juegos/trivia.html">Trivia</a>
+                        <a href="../juegos/juego2.html">Juego 2</a>
+                        <a href="../juegos/juego3.html">Juego 3</a>
+                        <a href="../juegos/puntaje.html">Puntaje</a>
+                    </div>
 
-                <!--El "encabezado" del bloque con la vida, progreso, etc-->
-                <div id="triviaStats">
-                    <p id="triviaProgreso"></p>
-                    <p id="triviaVidas"></p>
-                    <p id="triviaCorrectas"></p>
-                </div>
+                    <div class="navInfo">
+                        <a href="../informacion.html">Información</a>
+                    </div>
+                </nav>
+            </header>
+            <main>
+                <h2>Trivia: Adivina la bandera!</h2>
+                
+                <!--INSTRUCCIONES DE JUEGO Y BOTON PARA EMPEZAR-->
+                <section id="triviaInicio">
+                    <h3>¿Cómo jugar?</h3>
+                    <p>El juego consiste en adivinar el país al cual le pertenece la bandera. Comenzando con <strong>tres vidas</strong>, se presentara una bandera con cuatro opciones de paises y se deberá elegir el que corresponde. Por cada respuesta correcta se suman <strong>+10 puntos</strong> y por cada respuesta incorrecta se pierde una vida. <strong>El juego termina cuando se acaban todas las vidas o cuando se logran adivinar todas las banderas.</strong></p>
+                    <button id="triviaComenzar" type="button">Comenzar!</button>
+                </section>
 
-                <!--El bloque donde van las preguntas y las opciones-->
-                <div id="triviaPreguntas">
-                    <p id="triviaEstado">Cargando pregunta...</p>
-                    <h3>¿A que país pertenece la siguiente bandera?</h3>
-                    <div id="imgBandera"></div>
-                    <div id="triviaOpciones"></div>
-                    <button id="triviaSiguiente" type="button" hidden>Siguiente pregunta</button>
-                </div>
-            </section>
+                <!--BLOQUE DONDE VA EL JUEGO-->
+                <section id="triviaJuego">
 
-            <!--FINAL DEL JUEGO Y RESULTADOS-->
-            <section id="triviaFinal">
-                <h3 id="triviaResultado"></h3>
-                <h3>Resultado final</h3>
-                <p id="triviaPuntaje"></p>
-                <p>Guarde su Puntaje!</p>
-                <form action="" method="post" id="triviaJugador">
-                    <label for="triviaNombre">Ingrese su nombre</label>
-                    <input type="text" name="triviaNombre" id="triviaNombre">
-                    <button id="enviar" type="submit">Guardar resultado</button>
-                </form>
-                <button type="button" id="triviaReiniciar">Volver a jugar!</button>
-            </section>
-        </main>
-        <footer>
-            <p>&copy; 2026 TP-JUEGOS — Universidad Nacional de las Artes, Informática General.</p>
-            <p>Un proyecto de Dorgan, Hochnadel y La Rosa. <a href="../informacion.html">Conocé al equipo</a>.</p>
-        </footer>
-        <script src="../js/trivia.js"></script>
+                    <!--El "encabezado" del bloque con la vida, progreso, etc-->
+                    <div id="triviaStats">
+                        <p id="triviaProgreso"></p>
+                        <p id="triviaVidas"></p>
+                        <p id="triviaCorrectas"></p>
+                    </div>
+
+                    <!--El bloque donde van las preguntas y las opciones-->
+                    <div id="triviaPreguntas">
+                        <p id="triviaEstado">Cargando pregunta...</p>
+                        <h3>¿A que país pertenece la siguiente bandera?</h3>
+                        <div id="imgBandera"></div>
+                        <div id="triviaOpciones"></div>
+                        <button id="triviaSiguiente" type="button" hidden>Siguiente pregunta</button>
+                    </div>
+                </section>
+
+                <!--FINAL DEL JUEGO Y RESULTADOS-->
+                <section id="triviaFinal">
+                    <h3 id="triviaResultado"></h3>
+                    <h3>Resultado final</h3>
+                    <p id="triviaPuntaje"></p>
+                    <p>Guarde su Puntaje!</p>
+                    <form action="" method="post" id="triviaJugador">
+                        <label for="triviaNombre">Ingrese su nombre</label>
+                        <input type="text" name="triviaNombre" id="triviaNombre">
+                        <button id="enviar" type="submit">Guardar resultado</button>
+                    </form>
+                    <button type="button" id="triviaReiniciar">Volver a jugar!</button>
+                </section>
+            </main>
+            <footer>
+                <p>&copy; 2026 TP-JUEGOS — Universidad Nacional de las Artes, Informática General.</p>
+                <p>Un proyecto de Dorgan, Hochnadel y La Rosa. <a href="../informacion.html">Conocé al equipo</a>.</p>
+            </footer>
+            <script src="../js/trivia.js"></script>
+        </div>
     </body>
 </html>
