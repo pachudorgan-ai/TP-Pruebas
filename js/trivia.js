@@ -24,6 +24,7 @@ const final = document.querySelector ('#triviaFinal');
 const resultado = document.querySelector ('#triviaResultado');
 const puntaje = document.querySelector ('#triviaPuntaje');
 const jugador = document.querySelector ('#triviaJugador');
+const nombreJugador = document.querySelector('#triviaNombre');
 const botonReiniciar = document.querySelector ('#triviaReiniciar');
 final.hidden = true;
 
@@ -281,6 +282,16 @@ function terminarJuego(mensaje) {
     puntaje.innerHTML = 'Puntaje final: ' + puntos;
 
 }
+
+jugador.addEventListener('submit', function (event) {
+
+    event.preventDefault();
+
+    let nombre = nombreJugador.value;
+
+    localStorage.setItem('triviaNombre', nombre);
+
+});
 
 //Boton para reiniciar el juego, resetea todos los puntajes y vida y vuelve a mostrar una pregunta.
 
