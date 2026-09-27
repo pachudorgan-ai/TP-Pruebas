@@ -1,8 +1,14 @@
 /* ============================= */
 /* ESTILOS GENERALES             */
 /* ============================= */
+
 * {
     box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding:0;
 }
 
 #contenedor {
@@ -14,6 +20,9 @@
     background-color: #FFF8E5;
     display: flex;
     flex-direction: column;
+    font-family: "Calistoga", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 footer, header {
@@ -33,7 +42,10 @@ main {
     flex: 1;
 }
 
+/*====================*/
 /*MENU DE NAVEGACION*/
+/*====================*/
+
 nav {
     display: flex;
     align-items: center;
@@ -72,16 +84,20 @@ nav a:hover {
     color: #D2E0BF;
 }
 
-/*Titulos*/
+/*====================*/
+/*      TITULOS       */
+/*====================*/
 
 h2 {
     margin-bottom: 2rem;
     color: #493657;
     font-size: 2.5rem;
+    font-family: "Carter One", "Calistoga", serif;
 }
 
 h3 {
     color: #493657;
+    font-family: "Carter One", "Calistoga", serif;
 }
 
 /*=========================*/
@@ -175,9 +191,8 @@ button:disabled {
     box-shadow: 0 0.4rem 1rem rgba(73, 54, 87, 0.2);
 }
 
-/* ============================= */
-/* OPCIONES                      */
-/* ============================= */
+
+/* OPCIONES*/
 
 #triviaOpciones {
     display: flex;
@@ -198,9 +213,8 @@ button:disabled {
     color: #FFF8E5;
 }
 
-/* ============================= */
-/* RESPUESTAS                    */
-/* ============================= */
+
+/* RESPUESTAS*/
 
 #triviaOpciones button.correcto {
     background-color: #D2E0BF;
