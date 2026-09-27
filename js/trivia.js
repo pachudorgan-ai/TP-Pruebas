@@ -25,6 +25,7 @@ const resultado = document.querySelector ('#triviaResultado');
 const puntaje = document.querySelector ('#triviaPuntaje');
 const jugador = document.querySelector ('#triviaJugador');
 const nombreJugador = document.querySelector('#triviaNombre');
+const botonEnviar = document.querySelector ('#enviar')
 const botonReiniciar = document.querySelector ('#triviaReiniciar');
 final.hidden = true;
 
@@ -289,25 +290,42 @@ function terminarJuego(mensaje) {
 
     juego.hidden = true;
     final.hidden = false;
+    nombreJugador.disabled = false;
+    botonEnviar.disabled = false;
 
     resultado.innerHTML = 'Juego terminado: '+ mensaje;
     puntaje.innerHTML = 'Puntaje final: ' + puntos;
 
 }
 
-//Almaceno el nombre del jugador y su puntaje en el local storage
+//LOCAL STORAGE PARA TABLA DE PUNTAJES
 jugador.addEventListener('submit', function (event) {
     event.preventDefault();
 
     let nombre = nombreJugador.value;
-
+    //Almaceno el nombre del jugador y su puntaje en el local storage
     let resultadoJugador = {
         nombre: nombre,
         puntaje: puntos
     };
 
-    localStorage.setItem('triviaResultado', JSON.stringify(resultadoJugador));
+    //traigo las cosas guardadas en el local storage para no pisar resultados previos
+    let resultados = localStorage.getItem('triviaResultados');
 
+    //pregunto al getitem() si habia datos ya almacenados. Si los hay, los convierto del JSON a un array, y sino comienzo con un array vacio
+    if (resultados) {
+        resultados = JSON.parse(resultados);
+    } else {
+        resultados = [];
+    }
+    //agrego entonces a dicho array el nuevo objeto con el jugador y puntaje
+    resultados.push(resultadoJugador);
+
+    //y finalmente vuelvo a guardar este nuevo array con los resultados pasados (si habian) + el nuevo
+    localStorage.setItem('triviaResultados', JSON.stringify(resultados));
+
+    nombreJugador.disabled = true;
+    botonEnviar.disabled = true;
 });
 
 //Boton para reiniciar el juego, resetea todos los puntajes y vida y vuelve a mostrar una pregunta.
@@ -322,5 +340,5 @@ botonReiniciar.addEventListener('click', function () {
     juego.hidden = false;
     final.hidden = true;
 
-    generarPregunta()
+    generarPregunta();
 });
