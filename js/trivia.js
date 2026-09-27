@@ -15,7 +15,6 @@ const estado = document.querySelector ('#triviaEstado');
 juego.hidden = true;
 
 const preguntas = document.querySelector ('#triviaPreguntas');
-const titulo = document.querySelector ('#triviaBandera');
 const bandera = document.querySelector ('#imgBandera');
 const opciones = document.querySelector ('#triviaOpciones');
 const botonSiguiente = document.querySelector ('#triviaSiguiente');
@@ -291,6 +290,7 @@ function terminarJuego(mensaje) {
     juego.hidden = true;
     final.hidden = false;
     nombreJugador.disabled = false;
+    nombreJugador.value = '';
     botonEnviar.disabled = false;
 
     resultado.innerHTML = 'Juego terminado: '+ mensaje;
