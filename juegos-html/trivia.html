@@ -8,7 +8,16 @@
     <body>
         <header>
             <!--h1 con nombre de la pagina-->
-            <nav></nav>
+            <nav> 
+                <ul>
+                    <li><a href="../index.html">INDEX</a></li>
+                    <li><a href="cartas.html">CARTAS</a></li>
+                    <li><a href="dados.html">DADOS</a></li>
+                    <li><a href="trivia.html">TRIVIA</a></li>
+                    <li><a href="../puntajes.html">PUNTAJES</a></li>
+                    <li><a href="../informacion.html">INFORMACION</a></li>
+                </ul>
+            </nav>
         </header>
         <main>
             <h2>Trivia: Adivina la bandera!</h2>
@@ -49,11 +58,15 @@
                 <form action="" method="post" id="triviaJugador">
                     <label for="triviaNombre">Ingrese su nombre</label>
                     <input type="text" name="triviaNombre" id="triviaNombre">
+                    <button id="enviar" type="submit">Guardar resultado</button>
                 </form>
                 <button type="button" id="triviaReiniciar">Volver a jugar!</button>
             </section>
         </main>
-        <footer></footer>
+        <footer>
+            <p>&copy; 2026 TP-JUEGOS — Universidad Nacional de las Artes, Informática General.</p>
+            <p>Un proyecto de Dorgan, Hochnadel y La Rosa. <a href="../informacion.html">Conocé al equipo</a>.</p>
+        </footer>
         <script src="../js/trivia.js"></script>
     </body>
 </html>
