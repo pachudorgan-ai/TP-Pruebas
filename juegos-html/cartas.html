@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta charset="UTF-8">
+
+        <!-- Título que aparece en la pestaña del navegador -->
+        <title>Memotest | Juego de cartas</title>
+
+        <!-- Hoja de estilos -->
+        <link href="../css/estilos.css" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+        <header>
+            <!--h1 con nombre de la pagina-->
+            <nav> 
+                <ul>
+                    <li><a href="../index.html">INDEX</a></li>
+                    <li><a href="cartas.html">CARTAS</a></li>
+                    <li><a href="dados.html">DADOS</a></li>
+                    <li><a href="trivia.html">TRIVIA</a></li>
+                    <li><a href="../puntajes.html">PUNTAJES</a></li>
+                    <li><a href="../informacion.html">INFORMACION</a></li>
+                </ul>
+            </nav>
+
+        </header>
+
+        <main>
+            <!-- Titulo e instrucciones -->
+            <section id="memotestPresentacion">
+
+                <h2>Memotest</h2>
+                
+                <h3>¿Cómo jugar?</h3>
+
+                <p>
+                    Encontrá todas las parejas de cartas que contienen la misma imagen. 
+                    Seleccioná dos cartas para descubrir si son iguales.
+                    Poné a prueba tu memoria.
+
+                    Objetivo: Hallar todas las parejas de cartas en la menor cantidad de turnos posibles.
+                </p>
+
+            </section>
+
+             <!-- Sección de configuración -->
+            <section id="seccionConfiguracion">
+
+                <h2>Ingresá tu nombre de usuario y elegí un nivel</h2>
+                
+                <form id="memotestForm">
+
+                    <fieldset id="campoConfiguracion">
+                        <label for="memotestJugador">Nombre del jugador</label>
+                        <input type="text" id="memotestJugador">
+
+                        <label for="nivel">Nivel de dificultad:</label>
+                        <select id="nivel">
+                            <option value="vacio" selected disabled>Seleccioná una opcion</option>
+                            <option value="facil">Fácil - 6 pares</option>
+                            <option value="medio">Medio - 8 pares</option>
+                            <option value="dificil">Dificil - 10 pares</option>
+                        </select>
+
+                        <button id="memotestComenzar" type="button">Comenzar partida</button>
+
+                    </fieldset>
+            
+                </form>
+
+            </section> 
+
+             <!-- Informacion de la partida -->
+            <section id="memotestInformacionPartida">
+
+                <p>Intentos: 
+                    <span id="intentos">0</span>
+                </p>
+
+                <p>Parejas encontradas:
+                    <span id="parejasEncontradas">0</span>
+                </p>
+
+                <p>Nivel elegido:
+                    <span id="nivelElegido">-</span>
+                </p>
+
+            </section>
+
+            <!-- Tablero del juego con 12 parejas -->
+            <section id="tableroMemotest">
+
+                <h2>Encontrá las parejas</h2>
+
+                <div id="tableroCartas"></div>
+
+            </section>
+
+             <!-- Boton para reiniciar -->
+            <section id="memotestReiniciar">
+
+                <button id="reiniciar">Reiniciar juego</button>
+
+                <p>NOTA: Si se resetea la página antes de hallar todas los pares, no se guardará la información de la partida.</p>
+
+            </section>
+
+        </main>
+
+        <footer>
+            <p>&copy; 2026 TP-JUEGOS — Universidad Nacional de las Artes, Informática General.</p>
+            <p>Un proyecto de Dorgan, Hochnadel y La Rosa. <a href="../informacion.html">Conocé al equipo</a>.</p>
+        </footer>
+
+        <!-- JavaScript -->
+        <script src="/js/cartas.js"></script>
+    </body>
+
+</html>

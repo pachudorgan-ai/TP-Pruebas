@@ -122,6 +122,15 @@ h3 {
     background-color: #D2E0BF;
 }
 
+/* TEXTO DE CARGA*/
+
+#triviaEstado {
+    text-align: center;
+    margin: 1rem 0;
+    color: #9F86C0;
+    font-weight: bold;
+}
+
 /*BOTONES*/
 
 #triviaComenzar,
@@ -144,6 +153,7 @@ button {
     border-radius: 0.7rem;
     background-color: #9F86C0;
     color: #FFF8E5;
+    font-family: inherit;
     font-size: 1rem;
 }
 
@@ -215,7 +225,7 @@ button:disabled {
 #triviaOpciones button:disabled:hover {
     transform: none;
     background-color: #BE95C4;
-    
+    color: #FFF8E5;
 }
 
 /* RESPUESTAS*/
@@ -244,13 +254,19 @@ button:disabled {
 
 /* RESULTADO FINAL*/
 
+#triviaFinal p {
+    text-align: center;
+    font-size: 1.3rem;
+}
+
 #triviaResultado {
-    font-size: 2rem;
+    font-size: 2.2rem;
     color: #493657;
 }
 
 #triviaPuntaje {
-    font-size: 1.5rem;
+    text-align: center;
+    font-size: 1.8rem;
     font-weight: bold;
 }
 
@@ -275,14 +291,4 @@ button:disabled {
 #triviaJugador input:focus {
     outline: none;
     border-color: #493657;
-}
-
-/* ============================= */
-/* TEXTO DE CARGA                */
-/* ============================= */
-
-#triviaEstado {
-    margin: 1rem 0;
-    color: #9F86C0;
-    font-weight: bold;
 }
