@@ -241,9 +241,12 @@ button:disabled {
 }
 
 /* Evita que hover cambie el color de una respuesta */
-#triviaOpciones button.correcto:hover,
+#triviaOpciones button.correcto:disabled:hover {
+    background-color: #D2E0BF;
+}
+
 #triviaOpciones button.incorrecto:hover {
-    transform: none;
+    background-color: #da9797;
 }
 
 #triviaSiguiente {
