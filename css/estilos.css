@@ -231,3 +231,54 @@ button:disabled {
 #triviaOpciones button.incorrecto:hover {
     transform: none;
 }
+
+#triviaSiguiente {
+    margin-top: 1rem;
+    background-color: #493657;
+}
+
+
+/* RESULTADO FINAL*/
+
+#triviaResultado {
+    font-size: 2rem;
+    color: #493657;
+}
+
+#triviaPuntaje {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#triviaJugador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 2rem 0;
+}
+
+#triviaJugador input {
+    width: 60%;
+    padding: 0.8rem;
+    border: 0.15rem solid #9F86C0;
+    border-radius: 0.7rem;
+    background-color: #FFF8E5;
+    color: #493657;
+    font-size: 1rem;
+}
+
+#triviaJugador input:focus {
+    outline: none;
+    border-color: #493657;
+}
+
+/* ============================= */
+/* TEXTO DE CARGA                */
+/* ============================= */
+
+#triviaEstado {
+    margin: 1rem 0;
+    color: #9F86C0;
+    font-weight: bold;
+}
