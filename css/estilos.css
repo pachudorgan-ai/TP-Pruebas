@@ -126,7 +126,8 @@ h3 {
 
 #triviaComenzar,
 #triviaReiniciar {
-    margin-top: 1.5rem;
+    display: block;
+    margin: 1.5rem auto 0;
     background-color: #493657;
     width: 90%;
     text-align: center;
@@ -144,9 +145,6 @@ button {
     background-color: #9F86C0;
     color: #FFF8E5;
     font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.2s, background-color 0.2s;
 }
 
 button:hover {
@@ -216,6 +214,8 @@ button:disabled {
 
 #triviaOpciones button:disabled:hover {
     transform: none;
+    background-color: #BE95C4;
+    
 }
 
 /* RESPUESTAS*/
