@@ -50,6 +50,7 @@ nav {
     align-items: center;
     justify-content: space-between;
     padding: 1.2rem 5%;
+    font-size: 1.8rem;
 }
 
 .navInicio,
@@ -269,7 +270,7 @@ button:disabled {
 
 #triviaPuntaje {
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: bold;
 }
 
