@@ -214,6 +214,9 @@ button:disabled {
     color: #FFF8E5;
 }
 
+#triviaOpciones button:disabled:hover {
+    transform: none;
+}
 
 /* RESPUESTAS*/
 
@@ -223,7 +226,7 @@ button:disabled {
 }
 
 #triviaOpciones button.triviaIncorrecto {
-    background-color: #9F86C0;
+    background-color: #da9797;
     color: #FFF8E5;
 }
 
