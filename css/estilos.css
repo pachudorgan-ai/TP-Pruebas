@@ -117,6 +117,7 @@ h3 {
     border-radius: 1.5rem;
     background-color: white;
     box-shadow: 0 0.5rem 1.5rem rgba(73, 54, 87, 0.15);
+    text-align: center;
 }
 
 #triviaInicio, #triviaFinal {
@@ -226,7 +227,7 @@ button:disabled {
 #triviaOpciones button:disabled:hover {
     transform: none;
     background-color: #BE95C4;
-    color: #FFF8E5;
+    color: #493657;
 }
 
 /* RESPUESTAS*/
@@ -237,17 +238,19 @@ button:disabled {
 }
 
 #triviaOpciones button.triviaIncorrecto {
-    background-color: #da9797;
+    background-color: #DA9797;
     color: #FFF8E5;
 }
 
 /* Evita que hover cambie el color de una respuesta */
-#triviaOpciones button.correcto:disabled:hover {
+#triviaOpciones button.triviaCorrecto:disabled:hover {
     background-color: #D2E0BF;
+    color: #493657;
 }
 
-#triviaOpciones button.incorrecto:hover {
-    background-color: #da9797;
+#triviaOpciones button.triviaIncorrecto:disabled:hover {
+    background-color: #DA9797;
+    color: #FFF8E5;
 }
 
 #triviaSiguiente {
