@@ -1,27 +1,70 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
     <head>
         <meta charset="utf-8">
-        <title>TP-JUEGOS</title>
+
+        <!--Título que aparece en la pestaña del navegador-->
+        <title>JUEGO DE DADOS</title>
+
+        <!--Vinculación con la página de estilos-->
         <link href="css/estilos.css" rel="stylesheet">
     </head>
     <body>
         <header>
+            <!--Título que se visualiza en el header de la página-->
             <h1>TP-JUEGOS</h1>
-            <p></p>
-            <nav> 
-                <ul>
-                    <li><a>INDEX</a></li>
-                    <li><a>CARTAS</a></li>
-                    <li><a>DADOS</a></li>
-                    <li><a>TRIVIA</a></li>
-                    <li><a>PUNTAJES</a></li>
-                    <li><a>INFORMACION</a></li>
-                </ul>
-            </nav>
-        </header>
-        <main>
+            <p>Un sitio con tres juegos para jugar y competir por el mejor puntaje</p>
 
+            <!--Menú de navegación en el header de la página-->
+            <nav> 
+                    <div class="navInicio">
+                        <a href="../index.html">Inicio</a>
+                    </div>
+
+                    <div class="navJuegos">
+                        <a href="../juegos/trivia.html">Trivia banderas</a>
+                        <a href="cartas.html">Memotest</a>
+                        <a href="dados.html">Dados</a>
+                        <a href="../puntajes.html">Puntaje</a>
+                    </div>
+
+                    <div class="navInfo">
+                        <a href="../informacion.html">Información</a>
+                    </div>
+                </nav>
+        </header>
+
+        <!--Contenido principal de la página-->
+        <main>
+            <section>
+                <h2>Bienvenida</h2>
+                <p>
+                Este sitio reúne tres juegos distintos para poner a prueba la memoria, la suerte y los conocimientos.
+                Elegí un juego del menú de navegación para empezar a jugar, y revisá la página de puntajes para ver los mejores récords.
+                </p>
+            </section>
+            <section>
+                <h2>Los juegos</h2>
+                <article>
+                    <h3>Cartas</h3>
+                    <p>Un memotest con temática de naturaleza: encontrá todas las parejas en la menor cantidad de intentos posibles.</p>
+                </article>
+                <article>
+                    <h3>Dados</h3>
+                    <p>[Acá va una breve descripción de tu juego de dados, una vez que definamos las reglas]</p>
+                </article>
+                <article>
+                    <h3>Trivia</h3>
+                    <p>Una trivia de banderas: adiviná el país correspondiente antes de quedarte sin vidas.</p>
+                </article>
+            </section>
         </main>
+
+        <!--Contenido que se visualiza en el pie de la página-->
+        <footer>
+            <p>&copy; 2026 TP-JUEGOS — Universidad Nacional de las Artes, Informática General.</p>
+            <p>Un proyecto de Dorgan, La Rosa y Hochnadel. <a href="informacion.html">Conocé al equipo</a>.</p>
+        </footer>
     </body>
 </html>
+
